@@ -1,0 +1,15 @@
+.center_pos {
+    /* Adjust the width as needed */
+  
+    position: absolute;
+    top: 20%;
+    left: 35%;
+   /* Half of the width */
+    /* background-color: lightgray;  */
+  }
+
+  @media(max-width:767px){
+    .center_pos{
+        left: 10%;
+    }
+  }

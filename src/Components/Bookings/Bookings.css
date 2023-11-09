@@ -1,0 +1,15 @@
+.position_confirm_card{
+    position:fixed;
+    top:20%;
+    left:33%;
+    
+    z-index:3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+@media(max-width:767px){
+    .position_confirm_card{
+        left:5%;
+    }
+}
