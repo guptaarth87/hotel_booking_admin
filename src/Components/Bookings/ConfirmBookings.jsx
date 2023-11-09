@@ -66,7 +66,7 @@ export default function ConfirmBookings() {
         {   ChangeStatus?
            
             <div className='card position_confirm_card p-4 col-lg-5 col-md-8 col-sm-12'>
-                <h5> Press "Confirm" to change the payment status to "unpaid" and remove booking from list of confirmed bookings.</h5>
+                <h5> Press "Ok" to change the payment status to "unpaid" and remove booking from list of confirmed bookings.</h5>
                 <br></br><br></br>
                 <div className="row ">
                 <button className='btn btn-success col-4 m-2' onClick={confirmStatusChange}>OK</button>
