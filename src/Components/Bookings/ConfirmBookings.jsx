@@ -10,7 +10,8 @@ export default function ConfirmBookings() {
   const [customerId , setCustomerId] = useState(null);
   const [ChangeStatus , setChangeStatus] = useState(false);
   const [details , setDetails] = useState(null);
-
+  const [confirmDelete , setConfirmDelete] = useState(false);
+  
   const fetchData = async (pageNumber) => {
     try {
       const response = await axios.get(`${API_URL}getConfirmBookings/${pageNumber}`);
@@ -57,6 +58,13 @@ export default function ConfirmBookings() {
           window.location.reload();
       })
   }
+  const handleDelete = (id)=>{
+    axios.delete(`${API_URL}deletebooking/${id}`).then(result=>{
+      window.location.reload();
+    });
+         console.log(id);
+        //  window.location.reload();
+  }
 
  
   return (
@@ -79,6 +87,22 @@ export default function ConfirmBookings() {
             <></>
         }
         {
+              confirmDelete?
+              <>
+               <div className="card position_confirm_card p-4">
+               <h4 className='alignCentre'>Booking details</h4>
+                    <hr></hr>
+                    <div className="row">
+                     <h6 className='col-10' >Press Confirm to Delete</h6>
+                     <div className="row">
+                    <button className='btn btn-danger col-4 m-2' onClick={()=>{handleDelete(details._id)}}>Confirm</button>
+                    <button className='btn btn-success col-4 m-2' onClick={()=>{setConfirmDelete(false)}}>Cancel</button>
+                   
+                    </div>
+                    </div>
+               </div>
+              </>
+              :
             detailsCard?
             <>
             <div className="card position_confirm_card p-4">
@@ -104,8 +128,11 @@ export default function ConfirmBookings() {
                 <h6>Amount - {details.amount}</h6>
                 <h6>Payment status - {details.payment_status}</h6>
                 <br></br>
-                <button className='btn btn-danger col-4' onClick={()=>{setDetailsCard(false)}}>Close</button>
+                <div className="row">
+                <button className='btn btn-secondary col-4 m-2' onClick={()=>{setDetailsCard(false)}}>Close</button>
+                <button className='btn btn-danger col-4 m-2' onClick={()=>{setConfirmDelete(true)}}>Delete Booking</button>
                
+                </div>
             </div>
             </>:
             <></>
